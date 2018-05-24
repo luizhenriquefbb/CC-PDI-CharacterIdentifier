@@ -3,7 +3,9 @@ Run trainning
 
 go to core folder and run 'python pre-processing/trainning.py'
 '''
-import os, sys
+import os
+import sys
+import pickle
 sys.path.append("../core")
 import ImageToAscii
 
@@ -36,7 +38,10 @@ def main():
 		imageName = imagePath.replace(folder+'/', '').replace('.png','')
 		matrix.append([asciiImage, imageName])
 
-
+	
+	# save matrix
+	filehandler = open("matrix-KNN.pickle", 'w')
+	pickle.dump(matrix, filehandler)
 
 if __name__ == '__main__':
 	main()

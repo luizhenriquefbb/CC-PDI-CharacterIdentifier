@@ -46,6 +46,7 @@ def levenshtein(source, target):
 
 		previous_row = current_row
 
+	print ("distance is == " , previous_row[-1])
 	return previous_row[-1]
 
  

@@ -21,6 +21,16 @@ Depois da imagem já está na posição correta, aplicamos um KNN da imagem de e
 Feito isso, poderíamos redimensionar a imagem e converter para ascii.
 Convertemos a imagem para ASCII porque é muito mais fácil calcular uma distância euclidiana de uma string do que de uma imagem
 
+#### Trainamento
+- ir para a pasta core
+```sh
+cd core
+```
+
+- Rodar o arquivo de treinamento
+```sh
+python pre-processing/trainning.py
+```
 
 ## Grupo
 - Luiz Henrique Freire Barros
