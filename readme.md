@@ -32,3 +32,5 @@ Convertemos a imagem para ASCII porque é muito mais fácil calcular uma distân
 ```sh
 sudo pip install Pillow
 ```
+
+(TODO: usa o numpy. Ver se é padrão do ubuntu)

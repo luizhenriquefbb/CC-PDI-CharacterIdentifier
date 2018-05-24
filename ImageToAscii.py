@@ -7,7 +7,7 @@ import sys
 ASCII_CHARS = ['#', '?', '%', '.', 'S', '+', '.', '*', ':', ',', '@']
 
 
-def scale_image(image, new_width=100):
+def __scale_image(image, new_width=100):
 	"""
 	Resizes an image preserving the aspect ratio.
 	"""
@@ -19,11 +19,12 @@ def scale_image(image, new_width=100):
 	return new_image
 
 
-def convert_to_grayscale(image):
+def __convert_to_grayscale(image):
+	# TODO: usar algoritmo feito para os projetos
 	return image.convert('L')
 
 
-def map_pixels_to_ascii_chars(image, range_width=25):
+def __map_pixels_to_ascii_chars(image, range_width=25):
 	"""
 	Maps each pixel to an ascii char based on the range
 	in which it lies.
@@ -38,11 +39,11 @@ def map_pixels_to_ascii_chars(image, range_width=25):
 	return "".join(pixels_to_chars)
 
 
-def convert_image_to_ascii(image, new_width=100):
-	image = scale_image(image)
-	image = convert_to_grayscale(image)
+def __convert_image_to_ascii(image, new_width=100):
+	image = __scale_image(image)
+	image = __convert_to_grayscale(image)
 
-	pixels_to_chars = map_pixels_to_ascii_chars(image)
+	pixels_to_chars = __map_pixels_to_ascii_chars(image)
 	len_pixels_to_chars = len(pixels_to_chars)
 
 	image_ascii = [pixels_to_chars[index: index + new_width] for index in
@@ -52,8 +53,10 @@ def convert_image_to_ascii(image, new_width=100):
 
 
 def handle_image_conversion(image_filepath):
+
 	image = None
 	try:
+		# try to read the image
 		image = Image.open(image_filepath)
 	except Exception, e:
 		print "Unable to open image file {image_filepath}.".format(
@@ -61,8 +64,9 @@ def handle_image_conversion(image_filepath):
 		print e
 		return
 
-	image_ascii = convert_image_to_ascii(image)
-	print image_ascii
+	image_ascii = __convert_image_to_ascii(image)
+	# print image_ascii
+	return image_ascii
 
 
 if __name__ == '__main__':
