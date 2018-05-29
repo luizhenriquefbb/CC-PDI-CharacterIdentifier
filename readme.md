@@ -44,3 +44,8 @@ sudo pip install Pillow
 ```
 
 (TODO: usa o numpy. Ver se é padrão do ubuntu)
+
+[OpenCV](https://docs.opencv.org/3.0-beta/index.html)
+```
+sudo apt-get install python-opencv
+```

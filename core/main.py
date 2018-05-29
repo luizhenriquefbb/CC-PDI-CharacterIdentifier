@@ -1,26 +1,33 @@
 import pickle
 import ImageToAscii
 import Levenshtein
+import util
 
-def main(image1_path):
+import cv2
+
+def identifyCharacter(image1_path):
 
 	# read image
-	
+	image = cv2.imread(image1_path)
+
+
 	# Use technology similar to QR code to correct image angulation
+	# TODO:
+
+
 
 	# resize image
+	image = util.resizeImage(image, 67,67)
 
 
 	# image to ascii art
-	ascii1 = ImageToAscii.handle_image_conversion(image1_path)
+	ascii1 = ImageToAscii.handle_image_conversion(image_filepath=image1_path)
 
 
 	# find most similar key
 	# load KNN table
 	filehandler = open("matrix-KNN.pickle", 'r')
 	matrix = pickle.load(filehandler)
-
-	# TODO: validate matrix
 
 	smallerDistance = float('inf') # a very large number
 	result = None
@@ -45,4 +52,4 @@ if __name__ == '__main__':
 	print("checking "+ image1 + " ...")
 
 
-	main(image1)
+	identifyCharacter(image1)

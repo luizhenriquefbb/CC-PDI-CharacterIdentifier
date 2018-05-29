@@ -52,17 +52,21 @@ def __convert_image_to_ascii(image, new_width=100):
 	return "\n".join(image_ascii)
 
 
-def handle_image_conversion(image_filepath):
+def handle_image_conversion(image = None, image_filepath = None):
+	'''
+	Can receive an image already readed or image path
+	'''
 
-	image = None
-	try:
-		# try to read the image
-		image = Image.open(image_filepath)
-	except Exception, e:
-		print "Unable to open image file {image_filepath}.".format(
-			image_filepath=image_filepath)
-		print e
-		return
+	# read image
+	if image == None:
+		try:
+			# try to read the image
+			image = Image.open(image_filepath)
+		except Exception, e:
+			print "Unable to open image file {image_filepath}.".format(
+				image_filepath=image_filepath)
+			print e
+			return
 
 	image_ascii = __convert_image_to_ascii(image)
 	# print image_ascii
@@ -70,6 +74,10 @@ def handle_image_conversion(image_filepath):
 
 
 if __name__ == '__main__':
+	'''
+	use this only for test
+	'''
+
 	
 	# image_file_path = sys.argv[1]
 	image_file_path = "testeCases/A.png"
