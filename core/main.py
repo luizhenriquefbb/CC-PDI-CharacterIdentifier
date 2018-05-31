@@ -1,8 +1,13 @@
+# python modules
 import pickle
+
+# my modules
 import ImageToAscii
 import Levenshtein
 import util
+import FixPerspective
 
+# downloaded modules
 import cv2
 
 def identifyCharacter(image1_path):
@@ -12,12 +17,12 @@ def identifyCharacter(image1_path):
 
 
 	# Use technology similar to QR code to correct image angulation
-	# TODO:
-
+	# TODO: in test phase
+	warped = FixPerspective.fixPerspective(imageOpenCV=image)
 
 
 	# resize image
-	image = util.resizeImage(image, 67,67)
+	image = util.resizeImage(warped, 67, 67)
 
 
 	# image to ascii art
@@ -42,14 +47,25 @@ def identifyCharacter(image1_path):
 	print ("result = " , result)
 
 if __name__ == '__main__':
-	import sys
-
-	# pass path by terminal
-	# image1 = sys.argv[1]
+	import argparse
 	
-	image1 = "../testeCases/unknown/teste1.png"
+	# construct the argument parser and parse the arguments
+	ap = argparse.ArgumentParser()
+	ap.add_argument("-i", "--image", required=False,
+					help="Path to the image to be scanned")
+	args = vars(ap.parse_args())
+
+	if args["image"] == None:
+		image1 = "../testeCases/unknown/A-1.png"
+		
+	else:
+		# load the image and compute the ratio of the old height
+		# to the new height, clone it, and resize it
+		image1 = args["image"]
+	
 
 	print("checking "+ image1 + " ...")
 
 
 	identifyCharacter(image1)
+
