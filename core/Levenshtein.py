@@ -1,7 +1,7 @@
 
 import numpy as np
 
-def levenshtein(source, target):
+def levenshtein(source, target, signficance=''):
 	'''
 	Distance between 2 words. The larger the integer, the more different the strings are
 
@@ -46,7 +46,7 @@ def levenshtein(source, target):
 
 		previous_row = current_row
 
-	print ("distance is == " , previous_row[-1])
+	print ("distance to ", signficance, previous_row[-1])
 	return previous_row[-1]
 
  

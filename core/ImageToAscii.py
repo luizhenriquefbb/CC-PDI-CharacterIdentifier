@@ -3,6 +3,7 @@ Font: https://www.hackerearth.com/practice/notes/beautiful-python-a-simple-ascii
 '''
 from PIL import Image
 import sys
+import util
 
 ASCII_CHARS = ['#', '?', '%', '.', 'S', '+', '.', '*', ':', ',', '@']
 
@@ -55,18 +56,21 @@ def __convert_image_to_ascii(image, new_width=100):
 def handle_image_conversion(image = None, image_filepath = None):
 	'''
 	Can receive an image already readed or image path
+	params:
+		image is an openCv image
 	'''
 
 	# read image
-	if image == None:
+	if image is None:
 		try:
 			# try to read the image
 			image = Image.open(image_filepath)
 		except Exception, e:
-			print "Unable to open image file {image_filepath}.".format(
-				image_filepath=image_filepath)
+			print "Unable to open image file {image_filepath}.".format(image_filepath=image_filepath)
 			print e
 			return
+	else:
+		image = util.convertCV2toPIL(image)
 
 	image_ascii = __convert_image_to_ascii(image)
 	# print image_ascii

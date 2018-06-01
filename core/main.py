@@ -17,16 +17,24 @@ def identifyCharacter(image1_path):
 
 
 	# Use technology similar to QR code to correct image angulation
-	# TODO: in test phase
 	warped = FixPerspective.fixPerspective(imageOpenCV=image)
 
 
-	# resize image
-	image = util.resizeImage(warped, 67, 67)
+	# Remove colored pixels to compare only black ones
+	warped = util.cleanImage(warped)
 
+	# resize image
+	image = util.resizeImage(warped)
+
+	# show the original and scanned images
+	print("STEP 3: Apply perspective transform")
+	cv2.imshow("Original", image)
+	# cv2.waitKey(0)
 
 	# image to ascii art
-	ascii1 = ImageToAscii.handle_image_conversion(image_filepath=image1_path)
+	ascii1 = ImageToAscii.handle_image_conversion(image=image)
+	print ("ascii da imagem de entrada")
+	print ascii1
 
 
 	# find most similar key
@@ -37,7 +45,7 @@ def identifyCharacter(image1_path):
 	smallerDistance = float('inf') # a very large number
 	result = None
 	for case in matrix:
-		distance = Levenshtein.levenshtein(ascii1, case[0])
+		distance = Levenshtein.levenshtein(ascii1, case[0], signficance=case[1])
 		if distance < smallerDistance:
 			smallerDistance = distance
 			result = case[1]
@@ -56,7 +64,7 @@ if __name__ == '__main__':
 	args = vars(ap.parse_args())
 
 	if args["image"] == None:
-		image1 = "../testeCases/unknown/A-1.png"
+		image1 = "../testeCases/unknown/f.png"
 		
 	else:
 		# load the image and compute the ratio of the old height
