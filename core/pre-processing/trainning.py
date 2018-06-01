@@ -50,7 +50,7 @@ def main():
 		image = util.resizeImage(image)
 
 		# Convert to ascii and build matrix
-		asciiImage = ImageToAscii.handle_image_conversion(image=util.convertCV2toPIL(image))
+		asciiImage = ImageToAscii.handle_image_conversion(image=image)
 		imageName = imagePath.replace(folder+'/', '').replace('.png', '')
 		matrix.append([asciiImage, imageName])
 
