@@ -81,8 +81,7 @@ if __name__ == '__main__':
 	'''
 	use this only for test
 	'''
-
-	
 	# image_file_path = sys.argv[1]
-	image_file_path = "testeCases/A.png"
-	handle_image_conversion(image_file_path)
+	image_file_path = "/media/luiz/sata/Documentos/ciencia_da_computacao/PDI/CC-PDI-CharacterIdentifier/testeCases/unknown/deleteme-1.png"
+	a = handle_image_conversion(image_filepath=image_file_path)
+	import pdb; pdb.set_trace()

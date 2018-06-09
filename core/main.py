@@ -29,7 +29,7 @@ def identifyCharacter(image1_path):
 	# show the original and scanned images
 	print("STEP 3: Apply perspective transform")
 	cv2.imshow("Original", image)
-	# cv2.waitKey(0)
+	cv2.waitKey(0)
 
 	# image to ascii art
 	ascii1 = ImageToAscii.handle_image_conversion(image=image)

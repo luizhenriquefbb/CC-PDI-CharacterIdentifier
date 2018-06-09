@@ -13,10 +13,10 @@ Esta é uma atividade de PDI para a universidade Federal da Paraíba e tem o obj
 
 ### Como funciona
 
-Inicialmente o planejamento era de usar uma tecnologia similar ao do QR-CODE e consertar a angulação da imagem de entrada.
+Primeiramente queremos temos que consertar a perspectiva da imagem. Pra isso a imagem deve ter uma espécie de quadro.
+Depois que a imagem está com a perspectiva correta, redimensionamos ela para o tamanho das imagens de treinamento.
 
-Depois da imagem já está na posição correta, aplicamos um KNN da imagem de entrada com um conjunto de imagens previamentes avaliadas (conjunto de teste), ou seja, aplicamos uma técnica de IA, mesmo que de forma rudimentar
-
+Depois da imagem já está na posição e tamanho corretos, aplicamos um KNN da imagem de entrada com um conjunto de imagens previamentes avaliadas (conjunto de teste), ou seja, aplicamos uma técnica de IA, mesmo que de forma rudimentar
 
 Feito isso, poderíamos redimensionar a imagem e converter para ascii.
 Convertemos a imagem para ASCII porque é muito mais fácil calcular uma distância euclidiana de uma string do que de uma imagem
@@ -31,6 +31,12 @@ cd core
 ```sh
 python pre-processing/trainning.py
 ```
+
+## Execução
+```sh
+./run.sh
+```
+
 
 ## Grupo
 - Luiz Henrique Freire Barros
